@@ -1,9 +1,10 @@
 set -euo pipefail
 
+LLVM_CODENAME="noble"  # or "jammy" for Ubuntu 22.04
+
 sudo apt-get update
-sudo apt install -y curl gnupg
-sudo apt-get update software-properties-common
-echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/$(lsb_release -cs)/ llvm-toolchain-$(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/llvm.list
+sudo apt install -y curl gnupg software-properties-common
+echo "deb [signed-by=/usr/share/keyrings/llvm.gpg] http://apt.llvm.org/${LLVM_CODENAME}/ llvm-toolchain-${LLVM_CODENAME} main" | sudo tee /etc/apt/sources.list.d/llvm.list
 curl -fsSL https://apt.llvm.org/llvm-snapshot.gpg.key | \
 sudo gpg --dearmor -o /usr/share/keyrings/llvm.gpg
 
