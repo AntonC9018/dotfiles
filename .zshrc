@@ -5,15 +5,13 @@ export VISUAL="nvim"
 export EDITOR="nvim"
 export LLDB_USE_NATIVE_PDB_READER="yes"
 
-export PATH="$HOME/go/bin:$PATH"
+# export PATH="$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go-path"
 export PATH="$GOPATH/bin:$PATH"
 export GOEXPERIMENT="rangefunc"
 export TEMPL_EXPERIMENT="rawgo"
 
 export PATH="$PATH:/opt/mssql-tools18/bin"
-
-source "$HOME/.cargo/env"
 
 plugins=(
 	git

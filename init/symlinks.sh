@@ -44,6 +44,12 @@ jq -r 'to_entries[] | @base64' "$MAPPINGS_FILE" | while read -r entry; do
     mkdir -p "$(dirname "$target_path")"
 
     if [[ -e "$target_path" || -L "$target_path" ]]; then
+        # Already correctly linked, skip silently
+        if [[ -L "$target_path" && "$(readlink "$target_path")" == "$source_path" ]]; then
+            echo "Already linked, skipping."
+            continue
+        fi
+
         echo "Warning: target already exists: $target_path"
 
         if [[ -L "$target_path" ]]; then
