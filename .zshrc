@@ -1,6 +1,7 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/zig:$PATH"
 export PATH="$HOME/coding/zls/zig-out/bin:$PATH"
+export PATH="$HOME/nvim/bin:$PATH"
 export VISUAL="nvim"
 export EDITOR="nvim"
 export LLDB_USE_NATIVE_PDB_READER="yes"
