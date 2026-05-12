@@ -12,5 +12,6 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo add-apt-repository ppa:longsleep/golang-backports
 sudo apt-get update
 
-sudo apt-get install -y jq rustc cmake golang-go fzf ripgrep python3-lldb-17 clang-17 lldb-17 lld-17 zsh cargo nodejs gdb
+sudo apt-get install -y jq rustc cmake golang-go fzf ripgrep python3-lldb-17 clang-17 lldb-17 lld-17 zsh cargo nodejs gdb unzip
 sudo apt-get upgrade
+

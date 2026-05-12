@@ -5,3 +5,5 @@ wget "https://github.com/neovim/neovim/releases/download/nightly/$nvim_with_vers
 tar -xf nvim.tar.xz
 mv "$nvim_with_version" ~/nvim
 rm nvim.tar.xz
+
+cargo install tree-sitter-cli

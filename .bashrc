@@ -116,3 +116,4 @@ if ! shopt -oq posix; then
   fi
 fi
 [[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH

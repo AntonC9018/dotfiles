@@ -11,6 +11,7 @@ export GOPATH="$HOME/go-path"
 export PATH="$GOPATH/bin:$PATH"
 export GOEXPERIMENT="rangefunc"
 export TEMPL_EXPERIMENT="rawgo"
+export PATH="/home/anton/.cargo/bin:$PATH"
 
 export PATH="$PATH:/opt/mssql-tools18/bin"
 

@@ -8,3 +8,4 @@ bash ./zig.sh
 bash ./llvm_fix.sh
 bash ./font.sh
 bash ./symlinks.sh
+bash ./zsh.sh
