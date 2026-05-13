@@ -16,4 +16,10 @@ This sets up a myriad of things:
 - Installs depedencies used for initializing e.g. neovim;
 - Installs tmux and neovim;
 - Creates symlinks to the configuration files in `$HOME` to those in this repo;
-- Sets up wsl-related services.
+- Sets up wsl-related services;
+- Copies the github SSH key over from Windows.
+
+Then, start the `zsh` shell to source the config and use that instead of `bash`:
+```sh
+zsh
+```

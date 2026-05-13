@@ -9,3 +9,4 @@ bash ./llvm_fix.sh
 bash ./font.sh
 bash ./symlinks.sh
 bash ./zsh.sh
+bash ./wsl/ssh.sh
