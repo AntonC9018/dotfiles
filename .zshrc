@@ -18,6 +18,7 @@ export PATH="$PATH:/opt/mssql-tools18/bin"
 plugins=(
 	git
 	vi-mode
+    ssh-agent
 )
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
@@ -67,6 +68,25 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+function _load_ssh_keys() {
+    local args=(
+        -type f
+
+        # Only keep files with no extension
+        ! -name "*.*"
+
+        # File created by WSL
+        ! -name "environment-*"
+
+        -print0
+    )
+
+    eval "$(ssh-agent -s)"
+    find ~/.ssh "${args[@]}" |
+    xargs -0 ssh-add
+}
+_load_ssh_keys
 
 alias nvim-config="nvim ~/.config/nvim"
 alias nvim-thesis="cd $HOME/coding/thesis-png; nvim ."
