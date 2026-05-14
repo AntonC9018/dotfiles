@@ -5,29 +5,20 @@ set -euo pipefail
 # -u            error on unset variables
 # -o pipefail   fail pipeline if any command fails
 
-SSH_DIR="$HOME/.ssh"
+# Resolve the directory of THIS script, not the current working directory
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
-DEFAULT_WINDOWS_USER="Anton"
+# Source the shared user resolution logic
+source "$SCRIPT_DIR/resolve_windows_user.sh"
+
+SSH_DIR="$HOME/.ssh"
+WINDOWS_SSH_DIR="$WINDOWS_USER_DIR/.ssh"
 DEFAULT_KEY_NAME="github_wsl"
 
-WINDOWS_USERS_ROOT="/mnt/c/Users"
-DEFAULT_WINDOWS_SSH_DIR="$WINDOWS_USERS_ROOT/$DEFAULT_WINDOWS_USER/.ssh"
-
 # Permission constants
-# owner = rwx
-# group = ---
-# others = ---
 SSH_DIR_PERMS=700
-# owner = rw-
-# group = ---
-# others = ---
 PRIVATE_KEY_PERMS=600
-# owner = rw-
-# group = r--
-# others = r--
 PUBLIC_KEY_PERMS=644
-
-PROMPT_PREFIX="> "
 
 # Build paths
 key_src_path() {
@@ -50,44 +41,14 @@ key_pub_dst_path() {
     printf '%s/%s.pub' "$SSH_DIR" "$key_name"
 }
 
-# -p : create parent directories if needed,
-#      do nothing if directory already exists
 mkdir -p "$SSH_DIR"
-
 chmod "$SSH_DIR_PERMS" "$SSH_DIR"
 
-# Resolve Windows SSH directory
-while true; do
-    if [[ -d "$DEFAULT_WINDOWS_SSH_DIR" ]]; then
-        WINDOWS_SSH_DIR="$DEFAULT_WINDOWS_SSH_DIR"
-        break
-    fi
-
-    echo "Default Windows SSH directory not found:"
-    echo "  $DEFAULT_WINDOWS_SSH_DIR"
-    echo
-    echo "Enter either:"
-    echo "  - a Windows username (example: $DEFAULT_WINDOWS_USER)"
-    echo "  - or a full path to the .ssh directory"
-
-    read -rp "$PROMPT_PREFIX" USER_INPUT
-
-    # If input contains '/', treat it as a path
-    if [[ "$USER_INPUT" == *"/"* ]]; then
-        WINDOWS_SSH_DIR="$USER_INPUT"
-    else
-        WINDOWS_SSH_DIR="$WINDOWS_USERS_ROOT/$USER_INPUT/.ssh"
-    fi
-
-    if [[ -d "$WINDOWS_SSH_DIR" ]]; then
-        break
-    fi
-
-    echo
-    echo "SSH directory does not exist:"
+if [[ ! -d "$WINDOWS_SSH_DIR" ]]; then
+    echo "Error: Windows SSH directory does not exist:"
     echo "  $WINDOWS_SSH_DIR"
-    echo
-done
+    exit 1
+fi
 
 # Resolve SSH key
 while true; do
@@ -135,17 +96,11 @@ done
 
 # Copy private key
 cp "$PRIVATE_KEY_SRC" "$PRIVATE_KEY_DST"
-
-#
-# SSH refuses private keys with loose permissions.
 chmod "$PRIVATE_KEY_PERMS" "$PRIVATE_KEY_DST"
 
 # Copy public key if present
 if [[ -f "$PUBLIC_KEY_SRC" ]]; then
     cp "$PUBLIC_KEY_SRC" "$PUBLIC_KEY_DST"
-
-    #
-    # Public keys are not secret.
     chmod "$PUBLIC_KEY_PERMS" "$PUBLIC_KEY_DST"
 else
     echo
@@ -161,7 +116,5 @@ if [[ -f "$PUBLIC_KEY_DST" ]]; then
     echo "  Public key : $PUBLIC_KEY_DST"
 fi
 
-# Remove old github.com entries to avoid "Host key verification failed" errors
-ssh-keygen -R github.com 2>/dev/null
-# Scan and add the current GitHub keys to known_hosts
-ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+# Call the next script
+bash "$SCRIPT_DIR/init_github.sh"
