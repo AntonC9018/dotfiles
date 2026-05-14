@@ -160,3 +160,8 @@ echo "  Private key: $PRIVATE_KEY_DST"
 if [[ -f "$PUBLIC_KEY_DST" ]]; then
     echo "  Public key : $PUBLIC_KEY_DST"
 fi
+
+# Remove old github.com entries to avoid "Host key verification failed" errors
+ssh-keygen -R github.com 2>/dev/null
+# Scan and add the current GitHub keys to known_hosts
+ssh-keyscan -H github.com >> ~/.ssh/known_hosts
