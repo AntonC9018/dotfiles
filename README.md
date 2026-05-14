@@ -5,6 +5,8 @@ I'm only using this for WSL currently.
 
 Mason fails to install pyright, ts_ls, html and tailwindcss.
 
+Copying the github host to .ssh doesn't seem to work, it still pops a prompt on submodule restore.
+
 ## Usage
 
 First thing is cloning this repo:
