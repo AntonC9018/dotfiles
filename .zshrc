@@ -9,7 +9,6 @@ export LLDB_USE_NATIVE_PDB_READER="yes"
 # export PATH="$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go-path"
 export PATH="$GOPATH/bin:$PATH"
-export GOEXPERIMENT="rangefunc"
 export TEMPL_EXPERIMENT="rawgo"
 export PATH="/home/anton/.cargo/bin:$PATH"
 
