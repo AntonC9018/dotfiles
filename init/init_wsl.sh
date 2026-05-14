@@ -10,3 +10,4 @@ bash ./font.sh
 bash ./symlinks.sh
 bash ./zsh.sh
 bash ./wsl/ssh.sh
+bash ./git.sh
