@@ -116,5 +116,4 @@ if [[ -f "$PUBLIC_KEY_DST" ]]; then
     echo "  Public key : $PUBLIC_KEY_DST"
 fi
 
-# Call the next script
-bash "$SCRIPT_DIR/init_github.sh"
+exit 0

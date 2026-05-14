@@ -25,3 +25,4 @@ else
     echo "Warning: .gitconfig not found at:"
     echo "  $WINDOWS_GITCONFIG"
 fi
+exit 0
