@@ -19,5 +19,6 @@ bash ./symlinks.sh
 zsh -c '
     source ~/.zshrc
     git submodule update --init --recursive --depth 1
+    https_to_ssh
     exec zsh
 '
