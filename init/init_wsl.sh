@@ -14,11 +14,9 @@ bash ./zig.sh
 bash ./llvm_fix.sh
 bash ./font.sh
 bash ./zsh.sh
-(
-    source ../wsl/init_ssh.sh
-    source ../wsl/init_git.sh
-    source ../wsl/init_github.sh
-)
+bash ../wsl/init_ssh.sh
+bash ../wsl/init_git.sh
+bash ../wsl/init_github.sh
 bash ./git.sh
 bash ./nvim.sh
 bash ./symlinks.sh
