@@ -55,6 +55,12 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # backspace signal instead (equivalent to ^H)
 bindkey '^H' backward-delete-word
 
+function _load_ssh_keys() {
+    eval "$(ssh-agent -s)"
+    ssh-add "$HOME/.ssh/github_wsl"
+}
+_load_ssh_keys
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -69,27 +75,9 @@ fi
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
-function _load_ssh_keys() {
-    local args=(
-        -type f
-
-        # Only keep files with no extension
-        ! -name "*.*"
-
-        # File created by WSL
-        ! -name "environment-*"
-
-        -print0
-    )
-
-    eval "$(ssh-agent -s)"
-    find ~/.ssh "${args[@]}" |
-    xargs -0 ssh-add
-}
-_load_ssh_keys
-
 alias nvim-config="nvim ~/.config/nvim"
 alias nvim-thesis="cd $HOME/coding/thesis-png; nvim ."
 alias nvim-asdc="tmux; cd $HOME/coding/uniCourse_dataStructuresAndAlgorithms; nvim ."
 alias uniddb="cd $HOME/coding/uni_distributedDatabases; $HOME/tmux_attach_session.sh uniddb"
 alias explorer="explorer.exe"
+alias https_to_ssh="~/https_to_ssh.sh"

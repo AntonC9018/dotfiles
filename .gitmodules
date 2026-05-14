@@ -1,12 +1,12 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
-	url = https://github.com/AntonC9018/nvim-config
+	url = git@github.com:AntonC9018/nvim-config
 [submodule ".tmux/plugins/tmux_super_fingers"]
 	path = .tmux/plugins/tmux_super_fingers
-	url = https://github.com/AntonC9018/tmux_super_fingers
+	url = git@github.com:AntonC9018/tmux_super_fingers
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
-	url = https://github.com/ohmyzsh/ohmyzsh.git
+	url = git@github.com:ohmyzsh/ohmyzsh.git
 [submodule "powerlevel10k"]
 	path = powerlevel10k
-	url = https://github.com/romkatv/powerlevel10k.git
+	url = git@github.com:romkatv/powerlevel10k.git

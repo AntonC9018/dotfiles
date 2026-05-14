@@ -10,5 +10,6 @@
     ".tmux.conf": "~/.tmux.conf",
     ".config/clang": "~/.config/clang",
     ".config/dlv": "~/.config/dlv",
-    ".config/nvim": "~/.config/nvim"
+    ".config/nvim": "~/.config/nvim",
+    "https_to_ssh.sh": "~/https_to_ssh.sh"
 }
