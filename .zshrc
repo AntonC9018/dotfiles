@@ -75,8 +75,7 @@ fi
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 alias nvim-config="nvim ~/.config/nvim"
-alias nvim-thesis="cd $HOME/coding/thesis-png; nvim ."
-alias nvim-asdc="tmux; cd $HOME/coding/uniCourse_dataStructuresAndAlgorithms; nvim ."
+alias asdc="cd $HOME/coding/uniCourse_dataStructuresAndAlgorithms; $HOME/tmux_attach_session.sh asdc"
 alias uniddb="cd $HOME/coding/uni_distributedDatabases; $HOME/tmux_attach_session.sh uniddb"
 alias explorer="explorer.exe"
 alias https_to_ssh="~/https_to_ssh.sh"
