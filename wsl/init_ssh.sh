@@ -13,7 +13,9 @@ source "$SCRIPT_DIR/resolve_windows_user.sh"
 
 SSH_DIR="$HOME/.ssh"
 WINDOWS_SSH_DIR="$WINDOWS_USER_DIR/.ssh"
+
 DEFAULT_KEY_NAME="github_wsl"
+AWS_KEY_NAME="aws_coding.pem"
 
 # Permission constants
 SSH_DIR_PERMS=700
@@ -39,6 +41,48 @@ key_dst_path() {
 key_pub_dst_path() {
     local key_name="$1"
     printf '%s/%s.pub' "$SSH_DIR" "$key_name"
+}
+
+copy_key() {
+    local key_name="$1"
+
+    local private_src
+    local public_src
+    local private_dst
+    local public_dst
+
+    private_src="$(key_src_path "$key_name")"
+    public_src="$(key_pub_src_path "$key_name")"
+
+    private_dst="$(key_dst_path "$key_name")"
+    public_dst="$(key_pub_dst_path "$key_name")"
+
+    if [[ ! -f "$private_src" ]]; then
+        echo
+        echo "Warning: private key not found:"
+        echo "  $private_src"
+        return 1
+    fi
+
+    cp "$private_src" "$private_dst"
+    chmod "$PRIVATE_KEY_PERMS" "$private_dst"
+
+    if [[ -f "$public_src" ]]; then
+        cp "$public_src" "$public_dst"
+        chmod "$PUBLIC_KEY_PERMS" "$public_dst"
+    else
+        echo
+        echo "Warning: public key not found:"
+        echo "  $public_src"
+    fi
+
+    echo
+    echo "SSH key installed successfully:"
+    echo "  Private key: $private_dst"
+
+    if [[ -f "$public_dst" ]]; then
+        echo "  Public key : $public_dst"
+    fi
 }
 
 mkdir -p "$SSH_DIR"
@@ -75,45 +119,23 @@ while true; do
         read -rp "$PROMPT_PREFIX" KEY_NAME
     fi
 
-    PRIVATE_KEY_SRC="$(key_src_path "$KEY_NAME")"
-    PUBLIC_KEY_SRC="$(key_pub_src_path "$KEY_NAME")"
-
-    PRIVATE_KEY_DST="$(key_dst_path "$KEY_NAME")"
-    PUBLIC_KEY_DST="$(key_pub_dst_path "$KEY_NAME")"
-
-    if [[ -f "$PRIVATE_KEY_SRC" ]]; then
+    if [[ -f "$(key_src_path "$KEY_NAME")" ]]; then
         break
     fi
 
     echo
     echo "Private key not found:"
-    echo "  $PRIVATE_KEY_SRC"
+    echo "  $(key_src_path "$KEY_NAME")"
     echo
 
     # Prevent infinite auto-loop if default key is missing
     DEFAULT_KEY_NAME=""
 done
 
-# Copy private key
-cp "$PRIVATE_KEY_SRC" "$PRIVATE_KEY_DST"
-chmod "$PRIVATE_KEY_PERMS" "$PRIVATE_KEY_DST"
+# Copy selected SSH key
+copy_key "$KEY_NAME"
 
-# Copy public key if present
-if [[ -f "$PUBLIC_KEY_SRC" ]]; then
-    cp "$PUBLIC_KEY_SRC" "$PUBLIC_KEY_DST"
-    chmod "$PUBLIC_KEY_PERMS" "$PUBLIC_KEY_DST"
-else
-    echo
-    echo "Warning: public key not found:"
-    echo "  $PUBLIC_KEY_SRC"
-fi
-
-echo
-echo "SSH key installed successfully:"
-echo "  Private key: $PRIVATE_KEY_DST"
-
-if [[ -f "$PUBLIC_KEY_DST" ]]; then
-    echo "  Public key : $PUBLIC_KEY_DST"
-fi
+# Copy AWS PEM key
+copy_key "$AWS_KEY_NAME" || true
 
 exit 0
