@@ -13,6 +13,7 @@ sudo add-apt-repository -y ppa:deadsnakes/ppa
 sudo add-apt-repository -y ppa:longsleep/golang-backports
 sudo apt-get update -y
 
-sudo apt-get install -y jq rustc cmake golang-go fzf ripgrep python3-lldb-17 clang-17 lldb-17 lld-17 zsh cargo nodejs gdb unzip python3-pip
+# poppler-utils = pdftotext
+sudo apt-get install -y jq rustc cmake golang-go fzf ripgrep python3-lldb-17 clang-17 lldb-17 lld-17 zsh cargo nodejs gdb zip unzip python3-pip poppler-utils tesseract-ocr
 sudo apt-get upgrade -y
 

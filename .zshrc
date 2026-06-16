@@ -76,6 +76,9 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 alias nvim-config="nvim ~/.config/nvim"
 alias asdc="cd $HOME/coding/uniCourse_dataStructuresAndAlgorithms; $HOME/tmux_attach_session.sh asdc"
-alias uniddb="cd $HOME/coding/uni_distributedDatabases; $HOME/tmux_attach_session.sh uniddb"
+alias unilatex="cd $HOME/uni_thesisTemplate; $HOME/tmux_attach_session.sh unilatex"
+alias testgen="cd $HOME/coding/test_gen; $HOME/tmux_attach_session.sh testgen"
 alias explorer="explorer.exe"
 alias https_to_ssh="~/https_to_ssh.sh"
+
+export PATH=$PATH:$HOME/.pulumi/bin

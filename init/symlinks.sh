@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
+#TODO sudo, but write to user home, not sudo home?
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel)"
