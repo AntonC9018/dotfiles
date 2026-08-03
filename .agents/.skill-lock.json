@@ -1,0 +1,53 @@
+{
+  "version": 3,
+  "skills": {
+    "code-review": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coderabbitai/skills.git",
+      "skillPath": "skills/code-review/SKILL.md",
+      "skillFolderHash": "5049a0877f3e224666b7bdfe4a42aaccd78b3379",
+      "installedAt": "2026-06-01T20:02:23.685Z",
+      "updatedAt": "2026-06-01T20:02:23.685Z"
+    },
+    "autofix": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coderabbitai/skills.git",
+      "skillPath": "skills/autofix/SKILL.md",
+      "skillFolderHash": "6bf6634dc86f933da9a9ade797c2d9cc8d49a886",
+      "installedAt": "2026-06-01T20:02:23.687Z",
+      "updatedAt": "2026-06-01T20:02:23.687Z"
+    },
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-06-01T20:02:30.948Z",
+      "updatedAt": "2026-06-01T20:02:30.948Z"
+    },
+    "gh-address-comments": {
+      "source": "openai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/openai/skills.git",
+      "skillPath": "skills/.curated/gh-address-comments/SKILL.md",
+      "skillFolderHash": "042316bece4a9f832145dcff7d5506e99fe3ecf1",
+      "installedAt": "2026-06-08T15:33:43.365Z",
+      "updatedAt": "2026-06-08T15:34:08.584Z"
+    },
+    "codex-pr-body": {
+      "source": "openai/codex",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/openai/codex.git",
+      "skillPath": ".codex/skills/codex-pr-body/SKILL.md",
+      "skillFolderHash": "43edc2a8966db87783b4377514ce101061c7aa61",
+      "installedAt": "2026-06-11T08:20:47.963Z",
+      "updatedAt": "2026-06-11T08:20:47.963Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  }
+}

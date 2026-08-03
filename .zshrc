@@ -78,7 +78,18 @@ alias nvim-config="nvim ~/.config/nvim"
 alias asdc="cd $HOME/coding/uniCourse_dataStructuresAndAlgorithms; $HOME/tmux_attach_session.sh asdc"
 alias unilatex="cd $HOME/uni_thesisTemplate; $HOME/tmux_attach_session.sh unilatex"
 alias testgen="cd $HOME/coding/test_gen; $HOME/tmux_attach_session.sh testgen"
+alias thesisauto="cd $HOME/coding/thesis_automation; $HOME/tmux_attach_session.sh thesis_automation"
 alias explorer="explorer.exe"
 alias https_to_ssh="~/https_to_ssh.sh"
 
 export PATH=$PATH:$HOME/.pulumi/bin
+
+export PATH="~/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/anton/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

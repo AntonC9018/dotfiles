@@ -6,6 +6,8 @@ cd "$SCRIPT_DIR"
 # Ask for sudo password once at the beginning
 sudo -v
 
+bash ./passwordless_apt.sh
+
 cp ../wsl/init_windows_host.sh $HOME/init_windows_host
 bash ../wsl/init_init_windows_host.sh
 
