@@ -20,7 +20,7 @@ This sets up a myriad of things:
 - Installs various compilers;
 - Installs depedencies used for initializing e.g. neovim;
 - Installs tmux and neovim;
-- Creates symlinks to the configuration files in `$HOME` to those in this repo;
+- Installs configuration files in `$HOME` as symlinks or copies, as configured in `mappings.json`;
 - Sets up wsl-related services;
 - Copies the github SSH key over from Windows;
 - Changes shell to `zsh`;

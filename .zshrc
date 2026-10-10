@@ -84,7 +84,7 @@ alias https_to_ssh="~/https_to_ssh.sh"
 
 export PATH=$PATH:$HOME/.pulumi/bin
 
-export PATH="~/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # pnpm
 export PNPM_HOME="/home/anton/.local/share/pnpm"
@@ -93,3 +93,13 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end
+
+# opencode
+export PATH=/home/anton/.opencode/bin:$PATH
+
+# godot (.NET edition lives in ~/godot; 'godot' is a symlink there)
+export PATH="$HOME/godot:$PATH"
+
+# Added by CodeRabbit CLI installer
+export PATH="/home/anton/.local/bin:$PATH"
+export PATH="$HOME/.local/npm-global/bin:$PATH"

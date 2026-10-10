@@ -1,6 +1,5 @@
 ## Prototype previews
 
-- Run an Unslop pass on all reader-facing text before handing off a prototype or preview.
 - Start every prototype preview with the user-level preview script, run from the project root:
   - Linux/macOS: `pwsh -File ~/.agents/scripts/start-prototype-preview.ps1 -PrototypePath 'prototypes/<name>.html' -QueryString '<key=value>'`
   - Windows: `pwsh -File "$env:USERPROFILE\.agents\scripts\start-prototype-preview.ps1" -PrototypePath 'prototypes/<name>.html' -QueryString '<key=value>'`

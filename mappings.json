@@ -13,6 +13,12 @@
     ".config/nvim": "~/.config/nvim",
     "https_to_ssh.sh": "~/https_to_ssh.sh",
     "wsl.conf": "/etc/wsl.conf",
-    ".agents": "~/.agents",
-    "other/AGENTS.md": "~/.codex/AGENTS.md"
+    "agent-config": {
+        "target": "~/.agents",
+        "mode": "copy"
+    },
+    "other/AGENTS.md": {
+        "target": "~/.codex/AGENTS.md",
+        "mode": "copy"
+    }
 }
