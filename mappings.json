@@ -15,10 +15,17 @@
     "wsl.conf": "/etc/wsl.conf",
     "agent-config": {
         "target": "~/.agents",
-        "mode": "copy"
+        "mode": "copy",
+        "force": true
     },
-    "other/AGENTS.md": {
+    "agent-config/AGENTS.md": {
         "target": "~/.codex/AGENTS.md",
-        "mode": "copy"
+        "mode": "copy",
+        "force": true
+    },
+    "agent-config/prototypes.md": {
+        "target": "~/.codex/prototypes.md",
+        "mode": "copy",
+        "force": true
     }
 }

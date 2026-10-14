@@ -34,9 +34,22 @@ Push from the default user.
 ## Serving frontends
 
 Follow guidance in `prototypes.md` next to this file (`~/.agents/prototypes.md`;
-on Windows `%USERPROFILE%\.agents\prototypes.md`).
+`~/.codex/prototypes.md` for Codex; on Windows, use the matching directory under
+`%USERPROFILE%`).
+
+For prototype previews, run the user-level preview script from the project root:
+
+- Linux/macOS: `pwsh -File ~/.agents/scripts/start-prototype-preview.ps1 -PrototypePath 'prototypes/<name>.html' -QueryString '<key=value>'`
+- Windows: `pwsh -File "$env:USERPROFILE\.agents\scripts\start-prototype-preview.ps1" -PrototypePath 'prototypes/<name>.html' -QueryString '<key=value>'`
+
+Do not open or foreground the preview for the user. If visual verification is needed,
+keep browser automation in the background. Give the user the complete preview URL as
+plain text, including the full path and query string.
 
 ## Subagents
+
+Do not hesitate to spin up subagents to manage your context window and expedite your work.
+Evaluate what model and level of effort is fitting.
 
 If a repository is public, and no private data is going to be touched by a subagent,
 you should use free subagents via OpenCode.
@@ -65,3 +78,9 @@ Do not use GPT 6 Astra, unless explicitly asked.
 
 Ask the user to select the effort level if you're not sure.
 
+## Committing
+
+Unless specified otherwise, commit your work after each logical change.
+
+Only create worktrees when instructed or when you need your own space to test stuff.
+Otherwise assume working in the current worktree is safe.
